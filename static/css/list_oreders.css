@@ -1,0 +1,17 @@
+
+h1 {
+    padding-top: 50px;
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 20px;
+    text-align: left;
+}
+p{
+    text-align: center;
+    font-size: 18px;
+}

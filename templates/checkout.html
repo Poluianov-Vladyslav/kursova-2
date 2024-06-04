@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформлення замовлення</title>
+    <link rel="stylesheet" href="/static/css/head.css">
+    <link rel="stylesheet" href="/static/css/checkout.css">
+</head>
+<body>
+    <div id="header">
+        <ul id="nav">
+            <li><a href="{{ url_for('cart') }}">Корзинка</a></li>
+            <li><a href="{{ url_for('list_orders') }}">Ваші замовлення</a></li>
+            <li><a href="{{ url_for('logout') }}">Вийти</a></li>
+        </ul>
+    </div>
+    <h1>Оформлення замовлення</h1>
+    <div class="container">
+        <form action="{{ url_for('checkout') }}" method="post">
+            <div>
+                <label for="email">Електронна пошта:</label>
+                <input type="email" name="email" required>
+            </div>
+            <div>
+                <label for="address">Адреса:</label>
+                <input type="text" name="address" required>
+            </div>
+            <div>
+                <label for="phone_number">Номер телефону:</label>
+                <input type="text" name="phone_number" required>
+            </div>
+            <div>
+                <label for="payment_method">Спосіб оплати:</label>
+                <input type="radio" name="payment_method" value="нал" required> Готівка<br>
+                <input type="radio" name="payment_method" value="картою" required> Карткою<br>
+            </div>
+            <button type="submit">Оформити замовлення</button>
+        </form>
+    </div>
+</body>
+</html>

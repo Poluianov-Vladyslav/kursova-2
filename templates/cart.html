@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш Кошик</title>
+    <link rel="stylesheet" href="/static/css/head.css">
+    <link rel="stylesheet" href="/static/css/cart.css">
+</head>
+<body>
+    <div id="header">
+    <ul id="nav">
+        <li><a href="{{ url_for('homepage') }}">Головна сторінка</a></li>
+        <li><a href="{{ url_for('list_orders') }}">Ваші замовлення</a></li>
+    </ul>
+    </div>
+    <h1>Ваш Кошик</h1>
+    <div class="container">
+        {% if cart_items %}
+            <ul class="cart-list">
+                {% for item in cart_items %}
+                    <div class="cart-info">
+                        <h2>{{ item.book.title }}</h2>
+                        <p>Автор: {{ item.book.author }}</p>
+                        <p>Ціна: {{ item.book.price }}грн</p>
+                        <p>Кількість: {{ item.quantity }}</p>
+                        <form action="{{ url_for('remove_from_cart', item_id=item.id) }}" method="post">
+                            <button type="submit">Видалити</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </ul>
+            <div class="total">
+                <h2>Загальна сума: {{ total_price }}грн</h2>
+                <form action="{{ url_for('checkout') }}">
+                    <button type="submit">Оформити замовлення</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Ваш кошик порожній.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

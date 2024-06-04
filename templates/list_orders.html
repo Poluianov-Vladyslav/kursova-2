@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/head.css">
+    <link rel="stylesheet" href="/static/css/list_oreders.css">
+    <title>Замовлення</title>
+</head>
+<body>
+    <div id="header">
+    <ul id="nav">
+        <li><a href="{{ url_for('homepage') }}">Головна сторінка</a></li>
+        <li><a href="{{ url_for('cart') }}">Корзинка</a></li>
+        <li><a href="{{ url_for('logout') }}">Вийти</a></li>
+    </ul>
+    </div>
+    <h1>Ваші замовлення</h1>
+    {% if orders %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Дата створення замовлення</th>
+                <th>Статус</th>
+                <th>Книжки</th>
+                <th>Ціна</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_date }}</td>
+                <td>{{ order.status }}</td>
+                <td>
+                    <ul>
+                        {% for item in order.items %}
+                        <li>{{ item.book.title }} ({{ item.quantity }} штуки)</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ order.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Ви ще не зробили жодного замовлення.</p>
+    {% endif %}
+</body>
+</html>

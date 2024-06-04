@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/css/start.css">
+</head>
+<body>
+    <h2>Register</h2>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <label>
+            <input type="text" name="username" placeholder="Username" required maxlength="20">
+        </label><br>
+        <input type="password" name="password" placeholder="Password" required maxlength="20"><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Вже маєте акаунт? <a href="{{ url_for('login') }}">Увійти</a></p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+h1 {
+    padding-top: 50px;
+}
+.container {
+    margin: 20px;
+}
+
+.cart-list {
+    padding-right: 60%;
+}
+
+.cart-info {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.cart-info h2 {
+    margin-top: 0;
+}
+
+.total {
+    margin-top: 20px;
+}
+
+.total h2 {
+    margin: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #ff0000;
+}
